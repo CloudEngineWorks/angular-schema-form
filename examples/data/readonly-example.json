@@ -44,7 +44,7 @@
               },
       				"qa": {
       					"type":"object",
-      					"title": "Farmer Quality Assessment",
+      					"title": "Quality Assessment",
       					"properties":{
       						"rating": {
       							"type":"string",
@@ -102,7 +102,6 @@
     		  "type": "fieldset",
     		  "title": "QA",
     		  "items": [
-    		    "details[].inspection.qa.farmer",
       			{
       			  "key": "details[].inspection.qa.date",
       			  "type": "datepicker", "readonly": false
