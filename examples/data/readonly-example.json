@@ -95,6 +95,7 @@
         },
         {
           "key": "details[].inspection.s3",
+          "title":" S3 (should be readonly)",
           "type": "number", "readonly": true
         },
         {
