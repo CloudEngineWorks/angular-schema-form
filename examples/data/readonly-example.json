@@ -1,11 +1,10 @@
 {
 "model":
   { "id":36694,
-    "name":"Some URL",
-    "url":"http://someurl.com/",
+    "name":"Some Name",
     "details":
     [
-      {"inspection": {"s3": 123, "qa":{}, "date": "2014-06-28"}}
+      {"date": "2014-06-28"}
     ]
   },
 "schema": {
@@ -14,116 +13,59 @@
   "properties": {
     "id": {
       "type": "integer",
-      "additionalProperties": false,
       "readonly": true
     },
     "name": {
-      "type": "string",
-      "additionalProperties": false,
-      "readonly": true
-    },
-    "url": {
       "type": "string",
       "readonly": true
     },
     "details": {
       "type": "array",
-      "additionalProperties": false,
       "items": {
         "type": "object",
-        "additionalProperties": false,
         "properties": {
-          "inspection": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "s3": {
-                "type": "integer",
-                "additionalProperties": false,
-                "readonly": true
-              },
-      				"qa": {
-      					"type":"object",
-      					"title": "Quality Assessment",
-      					"properties":{
-      						"rating": {
-      							"type":"string",
-      							"enum": ["", "1 - Complete", "2 - Some pages missing", "3 - Not Self-contained", "4 - Poor", "4 - Complete Fail"]
-      						},
-      						"appearence": {
-      							"type":"string",
-      							"enum": ["", "Looks Great", "Legible, but Missing Some Images or Styles", "Difficult to Read", "Illegible"]
-      						},
-      						"comments": {
-      							"type":"string"
-      						},
-      						"date": {
-      							"required": true,
-      							"type":"string",
-      							"format": "date-time"
-      						}
-      					}
-      				}
-            },
-            "required": []
+          "date": {
+            "required": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          "comment": {
+            "required": false,
+            "type": "string"
           }
-        },
-        "required": []
-      },
-      "required": []
-    },
-    "index_date": {
-      "id": "#index_date",
-      "type": "string",
-      "additionalProperties": false,
-      "readonly": true
+        }
+      }
     }
-  },
-  "required": []
+  }
 },
-"form": [
-    {"key": "id", "readonly": true},
-    {"key": "name", "readonly": false},
-    {"key": "url", "readonly": true},
-    {"key": "details",
-      "type": "tabarray",
-      "title": "'inspection '+$index",
-      "items": [
-        {
-          "key": "details[].inspection.date",
-          "type": "datepicker", "readonly": true
-        },
-        {
-          "key": "details[].inspection.s3",
-          "title":" S3 (should be readonly)",
-          "type": "number", "readonly": true
-        },
-        {
-    		  "key": "details[].inspection.qa", "readonly": false,
-    		  "type": "fieldset",
-    		  "title": "QA",
-    		  "items": [
-      			{
-      			  "key": "details[].inspection.qa.date",
-      			  "type": "datepicker", "readonly": false
-      			},
-      			{
-      			  "key": "details[].inspection.qa.rating", "readonly": false
-      			},
-      			{
-      			  "key": "details[].inspection.qa.appearence", "readonly": false
-      			},
-      			{
-      			  "key": "details[].inspection.qa.comments", "readonly": false
-      			}
-    		  ]
-    		}
-      ]
-    },
-    {
-      "type": "submit",
-      "style": "btn-default",
-      "title": "OK"
-    }
-  ]
+"form":[
+  {
+    "key": "id",
+    "readonly": true
+  },
+  {
+    "key": "name",
+    "readonly": false
+  },
+  {
+    "key": "details",
+    "type": "tabarray",
+    "title": "'detail '+$index",
+    "items": [
+      {
+        "key": "details[].date",
+        "type": "datepicker",
+        "readonly": true
+      },
+      {
+        "key": "details[].comment"
+      }
+    ]
+  },
+  {
+    "type": "submit",
+    "style": "btn-default",
+    "title": "OK"
+  }
+]
 }
