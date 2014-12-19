@@ -1,0 +1,85 @@
+{
+"form":[
+  {
+    "type": "help",
+    "helpvalue": "<h4>Tabbed Array Example</h4><p>Tab arrays can have tabs to the left, top or right.</p>"
+  },
+  {
+    "key": "form",
+    "type": "tabarray",
+    "add": "New",
+    "remove": "Delete outter",
+    "style": {
+      "remove": "btn-danger"
+    },
+    "title": "value.key || 'New element '+($index + 1)",
+    "items": [
+      {
+        "key": "form[].key",
+        "type": "string"
+      },
+      {
+        "key": "form[].type",
+        "type": "string",
+        "default": "string"
+      }
+    ]
+  },
+  {
+    "type": "submit",
+    "style": "btn-default",
+    "title": "OK"
+  }
+],
+"schema": {
+  "type": "object",
+  "title": "form",
+  "properties": {
+    "form": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "title": "key",
+            "type": "string"
+          },
+          "type": {
+            "title": "type",
+            "type": "string",
+            "enum": [
+              "fieldset",
+              "string",
+              "textarea",
+              "array",
+              "tabarray",
+              "number",
+              "integer",
+              "textarea",
+              "tabs"
+            ]
+          }
+        },
+        "required": [
+          "key",
+          "name"
+        ]
+      }
+    }
+  }
+},
+"model":
+  {
+  "form": [
+    {
+      "type": "string",
+      "key": "name"
+    },
+    {
+      "type": "string",
+      "key": "address"
+    }
+  ]
+}
+
+}
