@@ -91,7 +91,7 @@
 <script type="text/javascript">
 
 angular.module('ReadOnlyApp',['schemaForm','ui.ace']).controller('NestedReadOnlyCtrl', function($scope,$http) {
-  var packing_list = { name: "Catalog Link", data: 'data/readonly-example.json' };
+  var packing_list = { name: "Catalog Link", data: 'data/nested_array.json' };
 
   $http.get(packing_list.data).then(function(res){
     $scope.schema = res.data.schema;
